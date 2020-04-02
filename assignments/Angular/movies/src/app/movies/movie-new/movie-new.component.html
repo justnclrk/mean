@@ -1,0 +1,70 @@
+<section id="wrapper">
+  <h1>Submit a movie and your review</h1>
+  <fieldset>
+    <div *ngIf='errorMessage'> {{ errorMessage }}</div>
+    <form (submit)='form.valid && onSubmit($event, form)' #form='ngForm'>
+      <div>
+        <label for="">Movie Title:</label>
+        <input type="text" name='title' [(ngModel)]='movie.title' required #title='ngModel' minlength='3'>
+        <div class="green" *ngIf='(title.touched || title.dirty) && title.errors'>
+          <div *ngIf='title.errors.required'>
+            Movies must have a title
+          </div>
+          <div *ngIf='title.errors.minlength'>
+            Movie title must be at least {{ title.errors.minlength.requiredLength }} characters. {{ title.errors.minlength.actualLength
+            }} characters is not enough.
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="">Your Name:</label>
+        <input type="text" name='reviewer' [(ngModel)]='movie.reviewer' required #reviewer='ngModel' minlength='3'>
+        <div class="green" *ngIf='(reviewer.touched || reviewer.dirty) && reviewer.errors'>
+          <div *ngIf='reviewer.errors.required'>
+            You must provide your name!
+          </div>
+          <div *ngIf='reviewer.errors.minlength'>
+            Your name must be at least {{ reviewer.errors.minlength.requiredLength }} characters. {{ reviewer.errors.minlength.actualLength
+            }} characters is not enough.
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="">Stars:</label>
+        <select name='stars' [(ngModel)]='movie.stars' required #stars='ngModel'>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        <div class="green" *ngIf='(stars.touched || stars.dirty) && stars.errors'>
+          <div *ngIf='stars.errors.required'>
+            Rate this movie!
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="">Your Review:</label>
+        <input type="text" name='content' [(ngModel)]='movie.content' required #content='ngModel' minlength='3'>
+        <div class="green" *ngIf='(content.touched || content.dirty) && content.errors'>
+          <div *ngIf='content.errors.required'>
+            You must provide a review!
+          </div>
+          <div *ngIf='content.errors.minlength'>
+            Your review must be at least {{ content.errors.minlength.requiredLength }} characters. {{ content.errors.minlength.actualLength
+            }} characters is not enough.
+          </div>
+        </div>
+      </div>
+      <button class="blue" *ngIf='form.valid'>
+        <b>Add movie</b>
+      </button>
+    </form>
+    <a routerLink="/">
+      <button class="orange">
+        <b>Cancel</b>
+      </button>
+    </a>
+  </fieldset>
+</section>

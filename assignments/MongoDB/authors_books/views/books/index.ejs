@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Books</title>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript"></script>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/authors">Authors</a>
+        <a href="/books/new">Create Book</a>
+    </nav>
+    <hr>
+	<div class="wrapper">
+        <table>
+            <thead>
+                <th>TITLE</th>
+                <th>AUTHOR</th>
+                <th>PAGES</th>
+                <th>YEAR</th>
+                <th>PUBLISHER</th>
+                <th>ACTIONS</th>
+            </thead>
+            <tbody>
+                <% for (const book of books) { %>
+                    <tr>
+                        <td><%= book.title %></td>
+                        <td><%= book.author.name %></td>
+                        <td><%= book.pages %></td>
+                        <td><%= book.year %></td>
+                        <td><%= book.publisher %></td>
+                        <td>
+                            <a href="/books/<%= book._id %>/edit"><button>Edit</button></a>
+                            <div>
+                                <form action="/books/<%= book._id %>/destroy" method="POST">
+                                    <button>Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+	</div>
+</body>
+</html>

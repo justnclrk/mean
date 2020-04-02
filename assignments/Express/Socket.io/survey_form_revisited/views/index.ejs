@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Survey Form Revisited</title>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+        $(document).ready(function (){
+            var socket = io.connect();
+		   
+			$('#survey_form').submit(function(e) {
+        		e.preventDefault();
+				socket.emit("posting_form", {
+				  	name: $('#name').val(),
+                    location: $('#location').val(),
+                    language: $('#language').val(),
+                    comment: $('#comment').val()
+                });
+			});
+			
+			socket.on('updated_message', function (data){
+			    $('#message').html("You emitted the following information to the server: " + JSON.stringify(data.response));
+			});
+			
+			socket.on('random_number', function (data){
+			   $('#number').html("Your lucky number emitted by the server is : " + JSON.stringify(data.response));
+			});
+        });
+    </script>
+</head>
+<body>
+	<div id="message"></div>
+	<div id="number"></div>
+	<div id="wrapper">
+		<form action="" id="survey_form">
+			<p>Name: <input type="text" name="name" id="name"></p>
+			<p><input name="location" id="location"></p>
+			<p>Language: <input name="language" id="language"></p>
+			<p>Comment (optional): <textarea name="comment" id="comment" cols="25" rows="5"></textarea></p>
+			<input id="button" type="submit" value="Submit">
+		</form>
+	</div>
+</body>
+</html>

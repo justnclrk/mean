@@ -1,0 +1,23 @@
+<section id="wrapper">
+  <h1>Yelp!</h1>
+  <legend>Reviews for
+    <b>{{ restaurant?.name }}</b>
+  </legend>
+  <button (click)='selectRestaurant(restaurant)' routerLink="review">
+    <b>NEW REVIEW</b>
+  </button>
+  <table>
+    <thead>
+      <th>Customer</th>
+      <th>Stars</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr *ngFor='let review of restaurant?.reviews'>
+        <td>{{ review?.customer }}</td>
+        <td>{{ review?.stars }}</td>
+        <td>{{ review?.description }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

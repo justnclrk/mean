@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Edit</title>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript"></script>
+</head>
+<body>
+	<nav>
+		<a href="/">Home</a>
+		<hr>
+	</nav>
+	<div id="wrapper">
+        <h1>Edit <%=  emerald.color %> Emerald!</h1>
+        <form action="/<%= emerald.id %>" method='POST'>
+            <p>Color: <input type="text" name="color" value="<%= emerald.color %>"></p>
+            <p>Location: <input type="text" name="location" value="<%= emerald.location %>"></p>
+            <input type="submit" value="Edit Emerald!">
+        </form>
+	</div>
+</body>
+</html>

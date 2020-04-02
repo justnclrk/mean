@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Intermediate</title>
+</head>
+<body>
+<script>
+//Part I
+//Create a function called starString() that takes a number and returns a string of that many *.
+function starString(num) {
+	let stars = "";
+	for (let i = 0; i < num; i++) {
+		stars += "*";
+	}
+	console.log(stars);
+};
+starString(7)
+// Part II & Part III
+// Create a function called drawStars() that takes an array of numbers and prints out *.
+// Modify the function above. Allow an array containing integers and strings to be passed to the drawStars() function. When a string is passed, instead of displaying *, display the first letter of the string according to the example below. You may use the .toLowerCase() string method for this part.
+function drawStars(array) {
+	const result = [];
+	for (let i = 0; i < array.length; i++) {
+		if (typeof array[i] === 'number'){
+            result.push(starString(array[i]))
+        } else if (typeof array[i] === 'string'){
+            let string = "";
+            for (let k = 0; k <array[i].length; k++){
+                string += array[i][0].toLowerCase();
+            }
+            result.push(string);
+        }
+    }
+    console.log(result)
+};
+drawStars([8,2, 'Justin'])
+</script>
+</body>
+</html>

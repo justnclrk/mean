@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mongoose_dashboard</title>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript"></script>
+</head>
+<body>
+	<nav>
+		<a href="/new">Add Emerald</a>
+		<hr>
+	</nav>
+	<div id="wrapper">
+		<div class="emeralds">
+			<img src="images/blue.png">
+			<img src="images/gold.png">
+			<img src="images/green.png">
+			<img src="images/grey.png">
+			<img src="images/light blue.png">
+			<img src="images/purple.png">
+			<img src="images/red.png">
+		</div>
+		<h3>Emeralds</h3>
+		<ul>
+			<% for ( const emerald of emeralds ) { %>
+				<li><%= emerald.color %> | <%= emerald.location %> | <a href='/<%= emerald._id %>/edit/'>Edit</a> | <form action="/<%= emerald._id %>/delete/" method="POST"><input type="submit" value="Delete"></form></li>
+			<% } %>
+		</ul>
+		<div class="emeralds">
+			<img src="images/blue.png">
+			<img src="images/gold.png">
+			<img src="images/green.png">
+			<img src="images/grey.png">
+			<img src="images/light blue.png">
+			<img src="images/purple.png">
+			<img src="images/red.png">
+		</div>
+	</div>
+</body>
+</html>

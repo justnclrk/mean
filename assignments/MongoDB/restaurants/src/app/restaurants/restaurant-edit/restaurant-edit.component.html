@@ -1,0 +1,39 @@
+<section>
+  <h1>Yelp!</h1>
+  <fieldset>
+    <legend>Edit {{ restaurant.name }}</legend>
+    <form (submit)='form.valid && onSubmit($event, form)' #form='ngForm'>
+      <div>
+        <label for="">Restaurant Name:</label>
+        <input type="text" value="{{restaurant.name}}" name='name' [(ngModel)]='restaurant.name' required #name='ngModel' minlength='3'>
+        <div *ngIf='(name.touched || name.dirty) && name.errors'>
+          <div *ngIf='name.errors.required'>
+            The restaurant must have a name!
+          </div>
+          <div *ngIf='name.errors.minlength'>
+            Restaurant name must be at least {{ name.errors.minlength.requiredLength }} characters. {{ name.errors.minlength.actualLength
+            }} characters is not enough.
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="">Restaurant Cuisine:</label>
+        <input type="text" value="{{restaurant.cuisine}}" name='cuisine' [(ngModel)]='restaurant.cuisine' required #cuisine='ngModel'
+          minlength='3'>
+        <div *ngIf='(cuisine.touched || cuisine.dirty) && cuisine.errors'>
+          <div *ngIf='cuisine.errors.required'>
+            The restaurant must have a cuisine!
+          </div>
+          <div *ngIf='cuisine.errors.minlength'>
+            Restaurant cuisine must be at least {{ cuisine.errors.minlength.requiredLength }} characters. {{ cuisine.errors.minlength.actualLength
+            }} characters is not enough.
+          </div>
+        </div>
+      </div>
+      <button *ngIf='form.valid'>Update Restaurant</button>
+    </form>
+    <a routerLink="/restaurants/{{restaurant._id}}">
+      <button>Cancel</button>
+    </a>
+  </fieldset>
+</section>

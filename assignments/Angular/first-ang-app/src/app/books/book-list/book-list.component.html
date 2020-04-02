@@ -1,0 +1,51 @@
+<!-- <app-book-new (createBook)='onCreate($event)'></app-book-new> -->
+
+<section>
+  <table class='table table-striped'>
+    <thead>
+      <th>
+        <input type='text' placeholder="ID" [(ngModel)]='filter.id'>
+        <button *ngIf='filter.id' (click)='filter.id = null'>x</button>
+      </th>
+      <th>
+        <input type='text' placeholder="TITLE" [(ngModel)]='filter.title'>
+        <button *ngIf='filter.title' (click)='filter.title = null' class='clear'>x</button>
+      </th>
+      <th>
+        <input type='text' placeholder="AUTHOR" [(ngModel)]='filter.author'>
+        <button *ngIf='filter.author' (click)='filter.author = null' class='clear'>x</button>
+      </th>
+      <th>
+        <input type='text' placeholder="PAGES" [(ngModel)]='filter.pages'>
+        <button *ngIf='filter.pages' (click)='filter.pages = null' class='clear'>x</button>
+      </th>
+      <th>
+        <input type='text' placeholder="YEAR" [(ngModel)]='filter.year'>
+        <button *ngIf='filter.year' (click)='filter.year = null' class='clear'>x</button>
+      </th>
+      <th>
+        <input type='text' placeholder="PUBLISHER" [(ngModel)]='filter.publisher'>
+        <button *ngIf='filter.publisher' (click)='filter.publisher = null' class='clear'>x</button>
+      </th>
+      <th>
+        ACTIONS
+        <button (click)='clearFilter()' *ngIf='filter.id || filter.title || filter.author || filter.year' class='clear'>x</button>
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor='let book of books | search:filter' (click)='selectBook(book)' [routerLink]='book.id'>
+        <td>{{ book.id }}</td>
+        <td>{{ book.title | titleize }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.pages }}</td>
+        <td>{{ book.year }}</td>
+        <td>{{ book.publisher }}</td>
+        <td (click)='onClick($event)'>
+          <button (click)='onDelete(book)'>DELETE</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- <app-book-detail [book]='selectedBook'></app-book-detail> -->

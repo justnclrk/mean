@@ -1,0 +1,57 @@
+<section>
+  <h1>Pet Shelter</h1>
+  <fieldset>
+    <legend>Know of a pet needing a home?</legend>
+    <form (submit)='form.valid && onSubmit($event, form)' #form='ngForm'>
+      <div>
+        <label for="">Pet Name:</label>
+        <input type="text" name='name' [(ngModel)]='pet.name' required #name='ngModel' minlength='3'>
+        <div *ngIf='(name.touched || name.dirty) && name.errors'>
+          <div *ngIf='name.errors.required'>
+            The pet must have a name
+          </div>
+          <div *ngIf='name.errors.minlength'>
+            Pet name must be at least {{ name.errors.minlength.requiredLength }} characters. {{ name.errors.minlength.actualLength }}
+            characters is not enough.
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="">Pet Type:</label>
+        <input type="text" name='type' [(ngModel)]='pet.type' required #type='ngModel' minlength='3'>
+        <div *ngIf='(type.touched || type.dirty) && type.errors'>
+          <div *ngIf='type.errors.required'>
+            The pet must have a type
+          </div>
+          <div *ngIf='type.errors.minlength'>
+            Pet type must be at least {{ type.errors.minlength.requiredLength }} characters. {{ type.errors.minlength.actualLength }}
+            characters is not enough.
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="">Description:</label>
+        <input type="text" name='description' [(ngModel)]='pet.description' required #description='ngModel' minlength='3'>
+        <div *ngIf='(description.touched || description.dirty) && description.errors'>
+          <div *ngIf='description.errors.required'>
+            The pet must have a description
+          </div>
+          <div *ngIf='description.errors.minlength'>
+            Pet description must be at least {{ description.errors.minlength.requiredLength }} characters. {{ description.errors.minlength.actualLength
+            }} characters is not enough.
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="">Skills (optional):</label>
+        <input value="Skill 1" type="text" name='skillOne' [(ngModel)]='pet.skillOne' #skillOne='ngModel'>
+        <input value="Skill 2" type="text" name='skillTwo' [(ngModel)]='pet.skillTwo' #skillOne='ngModel'>
+        <input value="Skill 3" type="text" name='skillThree' [(ngModel)]='pet.skillThree' #skillOne='ngModel'>
+      </div>
+      <button class="blue" *ngIf='form.valid'>Add pet</button>
+    </form>
+    <a routerLink="/">
+      <button class="red">Cancel</button>
+    </a>
+  </fieldset>
+</section>

@@ -1,0 +1,2 @@
+Retro Barcode Generator
+Create an application which will present the user a row of colored boxes. The colors should be in random order. One way to accomplish this is to create an array of random colors in your app.component.ts file and use them with interpolation. (You can find color names from https://www.w3schools.com/colors/colors_names.asp).

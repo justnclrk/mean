@@ -1,0 +1,23 @@
+<section>
+  <h1>Pet Shelter</h1>
+  <p>
+    <a routerLink='new'>Add a pet to the shelter</a>
+  </p>
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <tr *ngFor='let pet of pets' (click)='selectPet(pet)' [routerLink]='pet._id'>
+        <td>{{ pet.name | titleize }}</td>
+        <td>{{ pet.type | titleize }}</td>
+        <td (click)='onClick($event)'>
+          <button class="red" (click)='onDelete(pet)'>Delete</button>
+          <button class="blue" (click)='updatePet(pet)' [routerLink]="[pet._id,'edit']">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

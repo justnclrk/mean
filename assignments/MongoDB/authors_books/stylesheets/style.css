@@ -1,0 +1,26 @@
+*{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.wrapper{
+    margin: 0px auto;
+    text-align: center;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+table, th, tr, td {
+    border: 1px solid black;
+    padding: 3px 7px;
+}
+
+td{
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

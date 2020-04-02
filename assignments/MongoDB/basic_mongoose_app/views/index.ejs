@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>basic</title>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript"></script>
+</head>
+<body>
+	<form action="/users" method="POST">
+	<p>Name: <input type="text" name="name"></p>
+	<p>Age: <input type="number" name="age"></p>
+	<input type="submit" name="submit">
+	</form>
+	<div id="user_data">
+		<h3>Users</h3>
+		<ul>
+			<% for ( const user of users ) { %>
+				<li><%= user.name %> who is <%= user.age %></li>
+			<% } %>
+		</ul>
+	</div>
+</body>
+</html>

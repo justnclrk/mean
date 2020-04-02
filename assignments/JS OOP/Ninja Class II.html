@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Class II</title>
+</head>
+<body>
+    <script>
+        function Ninja(name){
+            const self = this;
+            const speed = 3;
+            const strength = 3;
+            const privateMethod = function(){
+                console.log(this);
+            }
+            health = 100;
+            this.name = name;
+            this.health = 100;
+            this.showStats = function(){
+                    console.log("Name: " + name + "," + " Health: " + health + "," + " Speed: " + speed + "," + " Strength: " + strength);
+                }
+            this.sayName = function(){
+                console.log("My Ninja name is " + name);
+            }
+            this.drinkSake = function(){
+                    console.log("Sake Health Boost:", health + 10);
+            }
+            this.punch = function(ninja){
+                ninja.health -= 5;
+                console.log(ninja.name + " was punched by " + this.name + " and lost 5 health!")
+            }
+            this.kick = function(ninja){
+                const damage = strength * 5;
+                ninja.health -= damage;
+                console.log(ninja.name + " was kicked by " + this.name + " and lost " + damage + " health!")
+            }
+        }
+        const Leonardo = new Ninja("Leonardo");
+        const Michelangelo = new Ninja("Michelangelo");
+        Michelangelo.punch(Leonardo);
+        Leonardo.kick(Michelangelo);
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<section id="wrapper">
+  <h1>Add a review for {{ restaurant?.name }}</h1>
+  <div class="red" *ngIf='errorMessage'>{{ errorMessage }}</div>
+  <fieldset>
+    <form (submit)='form.valid && onSubmit($event, form)' #form='ngForm'>
+      <div>
+        <label for="">Your Name:</label>
+        <input type="text" name='customer' [(ngModel)]='review.customer' required #customer='ngModel' minlength='3'>
+        <div *ngIf='(customer.touched || customer.dirty) && customer.errors'>
+          <div class="red" *ngIf='customer.errors.required'>
+            You must provide your name!
+          </div>
+          <div class="red" *ngIf='customer.errors.minlength'>
+            Your name must be at least {{ customer.errors.minlength.requiredLength }} characters. {{ customer.errors.minlength.actualLength
+            }} characters is not enough.
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="">Stars:</label>
+        <select name='stars' [(ngModel)]='review.stars' required #stars='ngModel'>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        <div *ngIf='(stars.touched || stars.dirty) && stars.errors'>
+          <div class="red" *ngIf='stars.errors.required'>
+            Rate this restaurant!
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="">Your Review:</label>
+        <input type="text" name='description' [(ngModel)]='review.description' required #description='ngModel' minlength='3'>
+        <div *ngIf='(description.touched || description.dirty) && description.errors'>
+          <div class="red" *ngIf='description.errors.required'>
+            You must provide a review!
+          </div>
+          <div class="red" *ngIf='description.errors.minlength'>
+            Your review must be at least {{ description.errors.minlength.requiredLength }} characters. {{ description.errors.minlength.actualLength
+            }} characters is not enough.
+          </div>
+        </div>
+      </div>
+      <!-- <input type='hidden' name='restreviewed' [(ngModel)]='review.restreviewed' required #restreviewed='ngModel' value='{{ restaurant?._id }}'> -->
+      <button *ngIf='form.valid'>
+        <b>Add review</b>
+      </button>
+    </form>
+    <a routerLink="/">
+      <button>
+        <b>Cancel</b>
+      </button>
+    </a>
+  </fieldset>
+</section>

@@ -1,0 +1,29 @@
+<section id="wrapper">
+  <h1>Rancid Tomatoes</h1>
+  <p>
+    <button class="yellow">
+      <b>
+        <a routerLink='new'>Add a new movie</a>
+      </b>
+    </button>
+  </p>
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Available Actions</th>
+    </thead>
+    <tbody>
+      <tr *ngFor='let movie of movies'>
+        <td>{{ movie.title | titleize }}</td>
+        <td (click)='onClick($event)'>
+          <button class="blue" (click)='selectMovie(movie)' [routerLink]='movie._id'>
+            <b>Read Reviews</b>
+          </button>
+          <button class="purple" (click)='createReview(movie)' [routerLink]="[movie._id,'review']">
+            <b>Write Review</b>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

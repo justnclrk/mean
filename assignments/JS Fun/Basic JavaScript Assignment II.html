@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Basic JavaScript Assignment II</title>
+</head>
+<body>
+<script>
+// Assignment: JavaScript Basics II
+// In this assignment, complete the function magic_multiply and ensure it passes all the test inputs and matches their results. Modify magic_multiply until all the tests pass. Do not create a new magic_multiply for each test!
+// Test 1
+// In order to make this test pass, we will need to add logic to magic_multiply. Whenever we call magic_multiply for 5 and 2, the returned result should always be 10. Remember, we must use these specific inputs!
+function magic_multiply1(x, y){
+    return x * y;
+}
+const test1 = magic_multiply1(5, 2);
+console.log(test1);
+// Test 2
+function magic_multiply2(x, y){
+    if (x === 0 && y === 0) {
+		return "All inputs 0";
+	}
+}
+const test2 = magic_multiply2(0, 0);
+console.log(test2);
+// Test 3
+function magic_multiply3(x, y){
+    if (x.constructor === Array) {
+	 	for (let i = 0; i < x.length; i++) {
+	 		x[i] = x[i] * y
+	 	}
+	    return x;
+    }
+}
+const test3 = magic_multiply3([1, 2, 3], 2);
+console.log(test3);
+// Hint: You will need to handle your output differently depending on if x is an array or an integer.
+// Test 4
+function magic_multiply4(x, y){
+    if (y.constructor === String) {
+		return "Error: Can not multiply by string";
+	}
+}
+const test4 = magic_multiply4(7, "three");
+console.log(test4);
+// Test 5 - Bonus
+// How could we check if an array is an array?
+function magic_multiply5(x, y){
+    if (x.constructor === String) {
+		let newString = "";
+		for (let i = 0; i<y; i++) {
+			newString += x;
+		}
+		return newString;
+	}
+}
+const test5 = magic_multiply5("Brendo", 4);
+console.log(test5);
+</script>
+</body>
+</html>

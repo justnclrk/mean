@@ -1,0 +1,35 @@
+<section>
+  <fieldset>
+    <legend>Registration</legend>
+    <form (submit)='form.valid && onSubmit($event, form)' #form='ngForm'>
+      <div>
+        <label for="">First Name</label>
+        <input type="text" name='fname' [(ngModel)]='reg.fname' required #fname='ngModel'>
+        <div *ngIf='(fname.touched || fname.dirty) && fname.errors'>
+          <div *ngIf='fname.errors.required'>
+            You must enter a First Name
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="">Last Name</label>
+        <input type="text" name='lname' [(ngModel)]='reg.lname' required #lname='ngModel'>
+        <div *ngIf='(lname.touched || lname.dirty) && lname.errors'>
+          <div *ngIf='lname.errors.required'>
+            You must enter a Last Name
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="">Email</label>
+        <input type="text" name='email' [(ngModel)]='reg.email' required #email='ngModel'>
+        <div *ngIf='(email.touched || email.dirty) && email.errors'>
+          <div *ngIf='email.errors.required'>
+            Email must be vaild
+          </div>
+        </div>
+      </div>
+      <button *ngIf='form.valid'>Register</button>
+    </form>
+  </fieldset>
+</section>

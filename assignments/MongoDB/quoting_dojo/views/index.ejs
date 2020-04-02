@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Quoting Dojo</title>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<h1>Welcome to Quoting Dojo</h1>
+		<form action="/quotes" method="POST">
+		<p>Your Name:</p>
+		<input type="text" name="user"></p>
+		<p>Your quote:</p>
+		<input type="text" name="quote"></p>
+		<button>Submit</button>
+		</form>
+		<form action="/quotes"><button>Skip to quote page</button></form>
+		
+		<div id="error_message">
+			<!-- tip to easily see objects printed in full instead of [object Object] -->
+			<% JSON.stringify(messages) %>
+			<!-- based on the structure of your messages, determine how to display them -->
+			<% if(messages.user_error) { %>
+				<% for (const x of messages.user_error) { %>
+					<h4><%= x %></h4>
+				<% } %>
+			<% } %>
+		</div>
+	</div>
+</body>
+</html>

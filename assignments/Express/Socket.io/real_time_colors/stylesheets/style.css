@@ -1,0 +1,26 @@
+*{
+    font-family: monospace;
+}
+#wrapper{
+    margin: 0px auto;
+    text-align: center;
+    height: 1000px;
+    width: 1000px;
+}
+button{
+    background-color: white;
+    border: 2px solid grey;
+    border-radius: 4px;
+    margin: 150px 5px;
+    font-size: 15px;
+    padding: 15px 30px;
+}
+.green{
+    background-color: green;
+}
+.blue{
+    background-color: blue;
+}
+.pink{
+    background-color: pink;
+}

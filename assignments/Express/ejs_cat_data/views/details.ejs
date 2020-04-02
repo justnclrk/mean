@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <title>Cat Details</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h2>Details for <%= cat.name %></h2>
+        <div>
+            <img src="/images/giphy.gif">
+        </div>
+        <div>
+            <p>Age: <%= cat.age %> </p>
+        </div>
+        <div>
+            <h3>Sleeping Spots: </h3>
+            <% for (var spot in cat.spots){ %>
+                <p><%= cat.spots[spot] %></p>
+            <% } %>
+        </div>
+        <hr>
+        <a href="/cats">BACK</a>
+        <hr>  
+    </div>
+</body>
+</html>

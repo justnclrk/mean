@@ -1,0 +1,13 @@
+*{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+img{ 
+    width: 70px;
+    height: 55px;
+}
+.emeralds{
+    margin: 0px auto;
+    padding: 10px;
+    text-align: center;
+    width: 900px;
+}

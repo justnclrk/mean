@@ -1,0 +1,29 @@
+<section id="wrapper">
+  <div></div>
+  <h1>Rancid Tomatoes</h1>
+  <legend>Reviews for
+    <b>{{ movie?.title }}</b>
+  </legend>
+  <button class="orange" (click)='onDelete(movie)'>
+    <b>DELETE MOVIE</b>
+  </button>
+  <table>
+    <thead>
+      <th>Reviewer</th>
+      <th>Stars</th>
+      <th>Reviews</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ movie?.reviewer | titleize }}</td>
+        <td>{{ movie?.stars }}</td>
+        <td>{{ movie?.content }}</td>
+      </tr>
+      <tr *ngFor='let review of reviews'>
+        <td>{{ review?.reviewer | titleize }}</td>
+        <td>{{ review?.stars }}</td>
+        <td>{{ review?.content }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

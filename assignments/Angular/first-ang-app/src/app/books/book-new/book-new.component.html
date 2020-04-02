@@ -1,0 +1,66 @@
+<section>
+  <fieldset>
+    <legend>Create Book</legend>
+    <form (submit)='form.valid && onSubmit($event, form)' #form='ngForm'>
+      <div>
+        <label for="">Title</label>
+        <input type="text" name='title' [(ngModel)]='book.title' required #title='ngModel' minlength='3'>
+        <div *ngIf='(title.touched || title.dirty) && title.errors'>
+          <div *ngIf='title.errors.required'>
+            You must enter a title
+          </div>
+          <div *ngIf='title.errors.minlength'>
+            Title must be at least {{ title.errors.minlength.requiredLength }} characters. {{ title.errors.minlength.actualLength }}
+            characters is not enough.
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="">Author</label>
+        <input type="text" name='author' [(ngModel)]='book.author' required #author='ngModel' minlength='3'>
+        <div *ngIf='(author.touched || author.dirty) && author.errors'>
+          <div *ngIf='author.errors.required'>
+            You must enter an author
+          </div>
+          <div *ngIf='author.errors.minlength'>
+            Author must be at least {{ author.errors.minlength.requiredLength }} characters. {{ author.errors.minlength.actualLength
+            }} characters is not enough.
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="">Pages</label>
+        <input type="number" name='pages' [(ngModel)]='book.pages' min='1' required>
+      </div>
+      <div>
+        <label for="">Year</label>
+        <input type="number" name='year' [(ngModel)]='book.year' #year='ngModel' min='1800' max='2018' required>
+        <div *ngIf='year.touched && year.errors'>
+          <div *ngIf='year.min'>
+            {{ year.min | json }}
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="">Publisher</label>
+        <input type="text" name='publisher' [(ngModel)]='book.publisher' #publisher='ngModel' required minlength="3">
+        <div *ngIf='(publisher.touched || publisher.dirty) && publisher.errors'>
+          <div *ngIf='publisher.errors.required'>
+            You must enter a publisher
+          </div>
+          <div *ngIf='publisher.errors.minlength'>
+            Publisher must be at least {{ publisher.errors.minlength.requiredLength }} characters. {{ publisher.errors.minlength.actualLength
+            }} characters is not enough.
+          </div>
+        </div>
+        <!-- <label for="">Password</label>
+        <input type="text" name='password' #password='ngModel' [(ngModel)]='book.passwordr' [pattern]='password.value' required>
+          <div *ngIf='publisher.errors.required'>You must enter a publisher</div>
+          <div *ngIf='publisher.errors.minlength'>
+            Publisher must be at least {{ publisher.errors.minlength.requiredLength }} characters. {{ publisher.errors.minlength.actualLength }} characters is not enough.
+        </div> -->
+      </div>
+      <button *ngIf='form.valid'>Submit</button>
+    </form>
+  </fieldset>
+</section>

@@ -1,0 +1,19 @@
+<section>
+  <div></div>
+  <h1>Pet Shelter</h1>
+  <!-- <div *ngIf='errorMessage'> {{ errorMessage }}</div> -->
+  <fieldset>
+    <legend>Details about {{ pet?.name }}</legend>
+    <p>Pet Type: {{ pet?.type }}</p>
+    <p>Description: {{ pet?.description }}</p>
+    <p>Skills:</p>
+    <div>
+      <ul>
+        <li>{{ pet?.skillOne }}</li>
+        <li>{{ pet?.skillTwo }}</li>
+        <li>{{ pet?.skillThree }}</li>
+      </ul>
+    </div>
+  </fieldset>
+  <button class="blue" (click)='onDelete(pet)'>Adopt this pet</button>
+</section>

@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Edit Book</title>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript"></script>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/books">Books</a>
+        <a href="/authors">Authors</a>
+    </nav>
+    <hr>
+	<div class="wrapper">
+        <fieldset>
+            <legend>Edit a Book</legend>
+            <form action="/books" method="POST">
+                <div>
+                    <label for="">Title</label>
+                    <input type="text" name="title">
+                </div>
+                <div>
+                    <label for="">Author</label>
+                    <select name="author" id="">
+                        <% for (const author of authors) { %>
+                            <option value="<%= author._id %>"><%= author.name %></option>
+                        <% } %>
+                    </select>
+                </div>
+                <div>
+                    <label for="">Pages</label>
+                    <input type="number" name="pages">
+                </div>
+                <div>
+                    <label for="">Year</label>
+                    <input type="number" name="year">
+                </div>
+                <div>
+                    <label for="">Publisher</label>
+                    <input type="text" name="publisher">
+                </div>
+                <button>Submit</button>
+            </form>
+        </fieldset>
+	</div>
+</body>
+</html>

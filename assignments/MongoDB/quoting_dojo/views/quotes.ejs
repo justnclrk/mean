@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Quotes</title>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<h3>Here are the awesome quotes</h3>
+		<ul>
+			<% for ( const quote of quotes ) { %>
+				<li>"<%= quote.quote %>"  <span id="quoted_user">-<%= quote.user %> at <%= quote.createdAt %></span></li>
+			<% } %>
+		</ul>
+		<p><a href="/">Go Back</a></p>
+	</div>
+</body>
+</html>

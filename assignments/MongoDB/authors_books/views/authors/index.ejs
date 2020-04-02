@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Authors</title>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript"></script>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/books">Books</a>
+        <a href="/authors/new">Create Author</a>
+    </nav>
+    <hr>
+	<div class="wrapper">
+        <table>
+            <thead>
+                <th>NAME</th>
+                <th>AGE</th>
+                <th>ALIVE?</th>
+                <th>Books</th>
+                <th>ACTIONS</th>
+            </thead>
+            <tbody>
+                <% for (const author of authors) { %>
+                    <tr>
+                        <td><%= author.name %></td>
+                        <td><%= author.age %></td>
+                        <td><%= author.isAlive %></td>
+                        <td>
+                            <ul>
+                            <% for (const book of author.books) { %>
+                                <li><%= book.title %></li>
+                            <% } %>
+                            </ul>
+                        </td>
+                        <td>
+                            <a href="/authors/<%= author._id %>/edit"><button>Edit</button></a>
+                            <div>
+                                <form action="/authors/<%= author._id %>/destroy" method="POST">
+                                    <button>Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+	</div>
+</body>
+</html>
